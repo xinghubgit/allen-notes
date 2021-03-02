@@ -1,0 +1,131 @@
+version: "3.8"
+services:
+    risk-report-svc:
+        image: 192.168.250.121:6000/csf/svc/risk-report-svc:v1.0.1
+            command: ["-e",  "QA",  "-l", "/app/svc/logs"]
+            restart: always
+            port:
+                - 30060:8080
+            environment:
+                ENV : QA
+            volumes:
+                - /app/docker/logs/risk-report-svc/logs:/app/svc/logs
+
+
+
+version: "3.8"
+
+services:
+  risk-report-svc:
+    image: 192.168.250.121:6000/csf/svc/risk-report-svc:v1.0.1
+    ports:
+      - "30060:8080"
+    environment:
+      ENV : QA
+    restart: always
+    volumes:
+      - /app/docker/logs/risk-report-svc/logs:/app/svc/logs
+    command: ["-e",  "QA",  "-l", "/app/svc/logs"]
+
+
+version: '3'
+services:
+    risk-report-svc:
+        image: 192.168.250.121:6000/csf/svc/risk-report-svc:v1.0.1
+            command: -e QA  -l /app/svc/logs
+            restart:always
+            port:
+                - 30060:8080
+            environment:
+                ENV : QA
+            volumes:
+                - /app/docker/logs/risk-report-svc/logs:/app/svc/logs
+
+    risk-stat-job:
+        image: 192.168.250.121:6000/csf/svc/risk-stat-job:v1.0.1
+            command: -e QA  -l /app/svc/logs
+            restart:always
+            port:
+                - 30020:8080
+            environment:
+                ENV : QA
+            volumes:
+                - /app/docker/logs/risk-stat-job/logs:/app/svc/logs
+
+    news-query-svc:
+        image: 192.168.250.121:6000/csf/svc/news-query-svc:v1.0.1
+            command: -e QA  -l /app/svc/logs
+            restart:always
+            port:
+                - 30070:8080
+            environment:
+                ENV : QA
+            volumes:
+                - /app/docker/logs/news-query-svc/logs:/app/svc/logs
+
+    kg-query-svc:
+        image: 192.168.250.121:6000/csf/svc/kg-query-svc:v1.0.1
+            command: -e QA  -l /app/svc/logs
+            restart:always
+            port:
+                - 30040:8080
+            environment:
+                ENV : QA
+            volumes:
+                - /app/docker/logs/kg-query-svc/logs:/app/svc/logs
+
+    comnam-query-svc:
+        image: 192.168.250.121:6000/csf/svc/comname-query-svc:v1.0.1
+            command: -e QA  -l /app/svc/logs
+            restart:always
+            port:
+                - 30010:8080
+            environment:
+                ENV : QA
+            volumes:
+                - /app/docker/logs/comname-query-svc/logs:/app/svc/logs
+
+
+
+
+apiVersion: v1
+kind: Prod
+metadata:
+  name: nginx
+  labels:
+    app: nginx
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx
+      ports:
+        - containerPort: 80
+      volumeMounts:
+        - name: nginx-vol
+          moutPath: /usr/nginx/html
+
+# multi line strings
+
+desc: |
+  this is a multiline string
+  and this is the next line
+  next line
+
+test: >
+  this is the first line.
+  continue to the fist line.
+
+#env variables
+
+#placeholder
+
+#force data types
+age: !!float 23
+gpa: !!str 3.5
+
+#dictionary is unordered collection
+#list is an ordered collection
+
+#yml vs json
+yml use indentation  while json use { (brackes)
+

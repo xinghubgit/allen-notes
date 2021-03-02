@@ -13,7 +13,7 @@ log/
 .sts4-cache
 
 ### IntelliJ IDEA ###
-.idea
+/.idea/*
 *.iws
 *.iml
 *.ipr
@@ -25,3 +25,7 @@ log/
 /dist/
 /nbdist/
 /.nb-gradle/
+
+
+ Offset commit failed on partition test_host_news-0 at offset 12061685: The group is rebalancing, so a rejoin is needed.
+
